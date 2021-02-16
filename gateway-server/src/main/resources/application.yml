@@ -1,0 +1,69 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway-server #应用名,同一实例下的集群要相同
+  cloud:
+    gateway:
+      #使用服务id服务名转发
+      discovery:
+        locator:
+          enabled: true #是否开启基于服务名发现的路由规则,通过serviceId转发到具体的服务名实例,默认是关闭
+          lower-case-service-id: true #是否将服务名小写,默认是关闭
+      #跨域请求
+      globalcors:
+        cors-configurations:
+          '[/**]':  #gateway网关上所有的URI请求都采用下面的配置处理,https://www.cnblogs.com/guanxiaohe/p/12065913.html
+            allow-credentials: true #允许携带认证信息
+            allowed-origins:
+              - "http://192.168.3.108"
+              - "http://api.fwtai.com"
+              - "https://api.fwtai.com"
+            allowed-headers: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - OPTIONS
+            max-age: 7200
+#限流,它不能和自定义的硬编码网关过滤器com.example.filter.GatewayFilterConfig一起使用???仅能即二选一,推荐使用配置的方式;若不配置限流的话,直接删除即可;https://blog.csdn.net/z69183787/article/details/80110811
+      routes:
+        - id: product-service
+          uri: lb://product-service #lb代表从注册中心获取服务
+          predicates:
+            - Path=/product/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1      #令牌桶每秒填充平均速率
+                redis-rate-limiter.burstCapacity: 8      #令牌桶的总容量,10240
+                key-resolver: '#{@pathKeysResolver}'     #使用spEL表达式按名称引用的bean,它在类 com.example.filter.ResolverKeyConfig定义的
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1      #令牌桶每秒填充平均速率
+                redis-rate-limiter.burstCapacity: 8      #令牌桶的总容量,10240
+                key-resolver: '#{@ipKeyResolver}'     #使用spEL表达式按名称引用的bean,它在类 com.example.filter.ResolverKeyConfig定义的
+#redis,配置用于令牌桶限流;若不配置限流的话,直接删除即可
+  redis:
+    timeout: 10000
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    lettuce:
+      pool:
+        max-active: 1024   #最大连接数
+        max-wait: 10000    #最大连接阻塞等待时间,单位是毫秒
+        max-idle: 200      #最大空闲连接数
+        min-idle: 5        #最小空闲连接数
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url: #下行是注册到服务注册中心
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/

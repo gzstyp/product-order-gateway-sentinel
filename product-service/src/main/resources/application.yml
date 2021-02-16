@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: product-service #应用名,同一实例下的集群要相同
+server:
+  port: 7070
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url: #下行是注册到服务注册中心
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eureka-server #应用名,同一实例下的集群要相同
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eureka01
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    fetch-registry: false # 若为 false 表示自己端就是注册中心,我的职责就是维护服务实例,并不需要去检索服务
+    register-with-eureka: false # 若为 false 表示不向注册中心注册自己
+    service-url:
+      defaultZone: http://localhost:8762/eureka/ #对外暴露的注册地址,需要注册到另外的一个8762地址,构建群集环境

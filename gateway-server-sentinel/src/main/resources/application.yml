@@ -1,0 +1,45 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: gateway-server-sentinel #应用名,同一实例下的集群要相同
+  cloud:
+    sentinel:
+      filter:
+        enabled: false # todo spring cloud gateway 和 alibaba的sentinel 整合配置;表示把网关的资源不展示在sentinel流的控制台上
+    gateway:
+      #使用服务id服务名转发
+      discovery:
+        locator:
+          enabled: true #是否开启基于服务名发现的路由规则,通过serviceId转发到具体的服务名实例,默认是关闭
+          lower-case-service-id: true #是否将服务名小写,默认是关闭
+      globalcors:
+        cors-configurations:
+          '[/**]':  #gateway网关上所有的URI请求都采用下面的配置处理,https://www.cnblogs.com/guanxiaohe/p/12065913.html
+            allow-credentials: true #允许携带认证信息
+            allowed-origins:  # - 横线表示是一组|一个集合,表示可以配置多个
+              - "http://192.168.3.108"
+              - "http://api.fwtai.com"
+              - "https://api.fwtai.com"
+            allowed-headers: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - OPTIONS
+            max-age: 7200
+      routes:
+        - id: product-service
+          uri: lb://product-service #lb代表从注册中心获取服务,即根据服务名称从注册中心获取服务的请求地址
+          predicates:
+            - Path=/product/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url: #下行是注册到服务注册中心
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
