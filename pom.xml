@@ -27,6 +27,7 @@
         (99%)2个9是基本可用;(99.9%)3个9是叫高可用;(99.99%)4个9是叫拥有自动恢复的高可用;
         主要手段:数据的冗余备份和服务的失效转移
         可以使用Nginx做网关集群,即部署多个 spring cloud gateway 网关实例,通过nginx反向代理，达到高可用
+        参考视频:《第二代微服务网关组件 - Spring Cloud Gateway》
     </description>
 
     <properties>
