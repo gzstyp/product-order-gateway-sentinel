@@ -125,7 +125,7 @@ public class GatewaySentinelConfig{
         final ApiDefinition apiOrder = new ApiDefinition("order-api").setPredicateItems(
             new HashSet<ApiPredicateItem>(){
                 {
-                    //仅匹配/order-service/order/index  仅对 -> http://127.0.0.1:9001/order-service/order/index 限流;http://127.0.0.1:9001/order-service/order/1
+                    //仅匹配/order-service/order/index  仅对 -> http://127.0.0.1:9001/order-service/order/index 限流;http://127.0.0.1:9001/order-service/order/1 这个不被限流
                     add(new ApiPathPredicateItem().setPattern("/order-service/order/index"));
                 }
             });
