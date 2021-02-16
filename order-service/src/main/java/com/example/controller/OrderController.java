@@ -25,7 +25,7 @@ public class OrderController{
         return orderService.selectOrderById(id);
     }
 
-    //这个是不被其它服务调用 http://127.0.0.1:9090/order/index 或 http://127.0.0.1:9001/order/index
+    //这个是不被其它服务调用(即不跨服务) http://127.0.0.1:9090/order/index 或 http://127.0.0.1:9001/order/index
     @GetMapping("/index")
     public void index(final HttpServletResponse response){
         final String json = "{\"code\":200,\"router\":\"order-service\",\"msg\":\"操作成功\"}";

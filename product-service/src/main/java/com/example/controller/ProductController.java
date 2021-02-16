@@ -32,7 +32,7 @@ public class ProductController{
         return productService.selectProductById(id);
     }
 
-    //这个是不被其它服务调用 http://127.0.0.1:7070/product/index 或 http://127.0.0.1:9001/product/index
+    //这个是不被其它服务调用(即不跨服务) http://127.0.0.1:7070/product/index 或 http://127.0.0.1:9001/product/index
     @GetMapping("/index")
     public void index(final HttpServletResponse response){
         final String json = "{\"code\":200,\"router\":\"product-service\",\"msg\":\"操作成功\"}";
