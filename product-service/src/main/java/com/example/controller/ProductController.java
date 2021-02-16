@@ -32,6 +32,13 @@ public class ProductController{
         return productService.selectProductById(id);
     }
 
+    //这个是不被其它服务调用 http://127.0.0.1:7070/product/index 或 http://127.0.0.1:9001/product/index
+    @GetMapping("/index")
+    public void index(final HttpServletResponse response){
+        final String json = "{\"code\":200,\"router\":\"product-service\",\"msg\":\"操作成功\"}";
+        responseJson(json,response);
+    }
+
     public void responseJson(final String json,final HttpServletResponse response){
         response.setContentType("text/html;charset=utf-8");
         response.setHeader("Cache-Control","no-cache");
