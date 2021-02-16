@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>gateway-server</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1.0.0</version>
 
     <description>
         gateway路由网关,不推荐使用,因为不会用,搞不定!!!推荐使用 gateway-server-sentinel
@@ -16,7 +16,7 @@
     <parent>
         <artifactId>product-order-gateway-sentinel</artifactId>
         <groupId>com.example</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>v1.0.0</version>
     </parent>
 
     <dependencies>
