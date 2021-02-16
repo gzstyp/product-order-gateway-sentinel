@@ -19,4 +19,8 @@
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
+    <!--打包配置,独立部署的都需要添加-->
+    <build>
+        <finalName>${project.artifactId}.${project.version}</finalName><!--打包成jar包,finalName生成的文件名-->
+    </build>
 </project>
