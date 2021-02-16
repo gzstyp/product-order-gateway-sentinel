@@ -24,7 +24,8 @@
         整合sentinel仅仅是做限流,鉴权可以用spring cloud gateway 自带的全局过滤器或网关过滤器;
         AccessFilter开启后url或请求头没有token则访问不了,正式环境则要开启;
         不推荐使用模块gateway-server,因为不会用,搞不定!!!推荐使用 gateway-server-sentinel,上线后移除该模块,模块gateway-server可以参考
-        (99%)2个9是基本可用;(99.9%)3个9是叫高可用;(99.99%)4个9是叫拥有自动恢复的高可用
+        (99%)2个9是基本可用;(99.9%)3个9是叫高可用;(99.99%)4个9是叫拥有自动恢复的高可用;
+        主要手段:数据的冗余备份和服务的失效转移
     </description>
 
     <properties>

@@ -9,6 +9,8 @@
 
     <description>
         gateway路由网关,已整合 gateway-server-sentinel,它不依赖redis
+        (99%)2个9是基本可用;(99.9%)3个9是叫高可用;(99.99%)4个9是叫拥有自动恢复的高可用;
+        主要手段:数据的冗余备份和服务的失效转移
     </description>
 
     <properties>
