@@ -29,6 +29,8 @@
         可以使用Nginx做网关集群,即部署多个 spring cloud gateway 网关实例,通过nginx反向代理，达到高可用
         参考视频:《第二代微服务网关组件 - Spring Cloud Gateway》
         分布式分为的同构和异构,本项目适用于同构
+        https://www.jianshu.com/p/9a8d94c0c90c
+        https://www.jianshu.com/p/f7b94599ffab
     </description>
 
     <properties>
