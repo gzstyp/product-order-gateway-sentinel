@@ -25,6 +25,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!--解决info页面报404错误,需要在配置文件 application.yml 定义构建信息(可以在chrome浏览器直接打开)-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
     </dependencies>
     <!--打包配置,独立部署的都需要添加-->
     <build>

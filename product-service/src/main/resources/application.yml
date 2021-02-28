@@ -10,3 +10,11 @@ eureka:
   client:
     service-url: #下行是注册到服务注册中心
       defaultZone: http://192.168.3.108:8761/eureka/,http://192.168.3.108:8762/eureka/
+#属于自定义信息,解决info页面报404错误,可以在chrome浏览器直接打开
+info:
+  app.name: ${spring.application.name}
+  company.name: www.fwtai.com
+  #需要在pom文件里的${basedir}/src/main/resources配置<filtering>true</filtering>
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
+  build.desc: 服务提供方,采用feign组件功能的负载均衡算法

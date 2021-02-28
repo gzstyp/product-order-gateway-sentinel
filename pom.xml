@@ -62,7 +62,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <!--日志开始-->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -88,8 +87,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- 此版本不能变,否则jsp页面报404 -->
-                <version>1.4.2.RELEASE</version>
+                <!-- 若是前后端分离或仅作接口可以不需指定版本号 1.4.2.RELEASE -->
                 <executions>
                     <execution>
                         <goals>
@@ -111,7 +109,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
@@ -151,7 +149,7 @@
                 <includes>
                     <include>**/**</include>
                 </includes>
-                <filtering>false</filtering>
+                <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/main/java</directory>
