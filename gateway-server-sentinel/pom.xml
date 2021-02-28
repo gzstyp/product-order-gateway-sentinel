@@ -16,6 +16,14 @@
         gateway路由网关,已整合 gateway-server-sentinel,它不依赖redis
         (99%)2个9是基本可用;(99.9%)3个9是叫高可用;(99.99%)4个9是叫拥有自动恢复的高可用;
         主要手段:数据的冗余备份和服务的失效转移
+
+        Spring Cloud Gateway是Spring Cloud体系的第二代网关组件；
+        基于Spring 5.0的新特性WebFlux进行开发，底层网络通信框架使用的是Netty，所以其吞吐量高、性能强劲，
+        Spring Cloud Gateway可以通过服务发现组件自动转发请求，默认集成了Ribbon做负载均衡，以及默认使用Hystrix对网关进行保护，
+        当然也可以选择其他的容错组件，例如Sentinel
+        功能强大：内置了很多实用的功能，例如转发、监控、限流等
+        设计优雅，容易扩展
+
     </description>
 
     <properties>
