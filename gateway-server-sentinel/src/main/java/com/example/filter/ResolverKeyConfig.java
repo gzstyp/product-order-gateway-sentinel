@@ -16,7 +16,7 @@ import java.util.Objects;
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
 */
-//@Configuration//它是结合redis来使用
+//@Configuration//它是需要结合redis来使用
 public class ResolverKeyConfig{
 
     //基于请求路径的限流
