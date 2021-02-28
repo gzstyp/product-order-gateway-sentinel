@@ -9,7 +9,7 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
-    fetch-registry: true
-    register-with-eureka: true
+    fetch-registry: false #不向注册中心注册自己
+    register-with-eureka: false # 是否检索服务
     service-url:
-      defaultZone: http://192.168.3.108:8762/eureka/ #对外暴露的注册地址,需要注册到另外的一个8762地址,构建群集环境
+      defaultZone: http://192.168.3.108:8762/eureka/,http://192.168.3.108:8763/eureka/ #对外暴露的注册地址,需要注册到另外的一个8762地址,构建群集环境

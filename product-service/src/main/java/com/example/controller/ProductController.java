@@ -20,7 +20,7 @@ public class ProductController{
     @Resource
     private ProductService productService;
 
-    // http://127.0.0.1:7070/product/11 http://127.0.0.1:9000/product-service/product/22
+    // http://127.0.0.1:7070/product/11 http://127.0.0.1:9001/product-service/product/22
     @GetMapping("/{id}")
     public Product selectProductById(@PathVariable("id") final Integer id){
         return productService.selectProductById(id);

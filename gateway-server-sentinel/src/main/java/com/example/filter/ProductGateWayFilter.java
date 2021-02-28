@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 //自定义网关过滤器(不是全局过滤器),可以用于用户服务模块或权限服务模块
 public class ProductGateWayFilter implements GatewayFilter, Ordered{
 
-    // 通过访问gateway测试 http://127.0.0.1:9000/product/2
+    // 通过访问gateway测试 http://127.0.0.1:9001/product/2
     @Override
     public Mono<Void> filter(final ServerWebExchange exchange,final GatewayFilterChain chain){
         System.out.println("ProductGateWayFilter,自定义网关过滤器(非全局过滤器)已执行");

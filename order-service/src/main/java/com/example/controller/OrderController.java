@@ -19,7 +19,7 @@ public class OrderController{
     @Resource
     private OrderService orderService;
 
-    // http://127.0.0.1:9090/order/33 http://127.0.0.1:9000/order-service/order/33
+    // http://127.0.0.1:9090/order/33 http://127.0.0.1:9001/order-service/order/33
     @GetMapping("/{id}")
     public Order selectProductById(@PathVariable("id") final Integer id){
         return orderService.selectOrderById(id);
