@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-//熔断机制,服务熔断降级处理可以捕获异常
+//熔断机制,服务熔断降级处理可以捕获异常,专用是即及时返回服务调用失败的结果,让线程不因为等待服务而阻塞
 @Component
 public class ProductServiceFallbackFactory implements FallbackFactory<ProductService>{
 
