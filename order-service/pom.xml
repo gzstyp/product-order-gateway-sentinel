@@ -24,6 +24,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!--hystrix 断路器 | 熔断器 | 保险丝,可以即及时返回服务调用失败的结果,让线程不因为等待服务而阻塞;用户的请求不是直接访问服务,而是使用线程池中空闲的线程访问服务,加速失败判断时间-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
