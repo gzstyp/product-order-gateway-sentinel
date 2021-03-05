@@ -43,7 +43,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- 若项目仅仅是单独使用的依赖 -->
+        <!-- 若项目仅仅是单独使用Sentinel的依赖,不配合Sentinel独立的服务端 -->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
