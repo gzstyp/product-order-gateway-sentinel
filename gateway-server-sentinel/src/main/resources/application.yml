@@ -33,9 +33,13 @@ spring:
           predicates:
             - Path=/product/**
         - id: order-service
-          uri: lb://order-service
+          uri: lb://order-service #可以是相对地址;可以是绝对地址
           predicates:
             - Path=/order/**
+        - id: yinlz
+          uri: http://www.yinlz.com #可以是绝对地址
+          predicates:
+            - Path=/yinlz/**
 eureka:
   instance:
     prefer-ip-address: true
