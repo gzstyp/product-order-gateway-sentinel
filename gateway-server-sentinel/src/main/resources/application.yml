@@ -33,7 +33,7 @@ spring:
           predicates:
             - Path=/product/**
         - id: order-service
-          uri: lb://order-service #可以是相对地址;可以是绝对地址
+          uri: lb://order-service #uri可以是相对地址;可以是绝对地址
           predicates:
             - Path=/order/**
         - id: yinlz
